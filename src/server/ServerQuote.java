@@ -15,15 +15,12 @@ public class ServerQuote {
     private void createConnection(){
         try {
             var listener = new ServerSocket(PORT, MAX_COUNT);
-
             Socket client;
             int count = 0;
-
             while (count<=MAX_COUNT){
                 count++;
                 client = listener.accept();
                 ListenerQuote lQ = new ListenerQuote(client);
-
                 Thread thread = new Thread(lQ);
                 thread.start();
             }
